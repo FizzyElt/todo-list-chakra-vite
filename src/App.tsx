@@ -1,38 +1,20 @@
-import React, { useState } from 'react'
-import { Button, Container, Wrap, WrapItem, Center } from '@chakra-ui/react'
+import * as React from 'react'
+import { ChakraProvider, Box, Grid, VStack } from '@chakra-ui/react'
+import TodoListCard from './components/TodoListCard'
+import theme from './theme'
+import TodoContextProvider from './ContextProvider/TodoContext'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <Wrap spacing='30px'>
-      <WrapItem>
-        <Center w='180px' h='80px' bg='red.200'>
-          Box 1
-        </Center>
-      </WrapItem>
-      <WrapItem>
-        <Center w='180px' h='80px' bg='green.200'>
-          Box 2
-        </Center>
-      </WrapItem>
-      <WrapItem>
-        <Center w='180px' h='80px' bg='tomato'>
-          Box 3
-        </Center>
-      </WrapItem>
-      <WrapItem>
-        <Center w='180px' h='80px' bg='blue.200'>
-          Box 4
-        </Center>
-      </WrapItem>
-      <WrapItem>
-        <Center w='180px' h='80px' bg='blackAlpha.500'>
-          Box 5
-        </Center>
-      </WrapItem>
-    </Wrap>
-  )
-}
-
+const App = () => (
+  <ChakraProvider theme={theme}>
+    <TodoContextProvider>
+      <Box fontSize='xl'>
+        <Grid minH='100vh' p={3}>
+          <VStack mt={32}>
+            <TodoListCard />
+          </VStack>
+        </Grid>
+      </Box>
+    </TodoContextProvider>
+  </ChakraProvider>
+)
 export default App
